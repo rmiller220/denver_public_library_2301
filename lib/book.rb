@@ -1,4 +1,7 @@
+require 'date'
+
 class Book
+  attr_reader :title, :publication_date
   def initialize(book_details)
     @author_first_name = book_details[:author_first_name]
     @author_last_name = book_details[:author_last_name]
@@ -11,10 +14,10 @@ class Book
   end
   
   def author
-    @author_first_name + ' ' + @author_last_name
+    "#{@author_first_name} #{@author_last_name}"
   end
 
   def publication_year
-    @publication_date.split[2]
+    Date.parse(@publication_date).year
   end
 end
